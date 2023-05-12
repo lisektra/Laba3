@@ -1,0 +1,26 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="main.*" />
+          <option value="list.*" />
+          <option value="Litvinova.mainlise.OpenGl" />
+          <option value="Litvinova.mainlise.OpenGL" />
+          <option value="Litvinova.mainlise.gluPerspective" />
+          <option value="Litvinova.mainlise.glTranslatef" />
+          <option value="Litvinova.mainlise.glClear" />
+          <option value="Litvinova.mainlise.GL_COLOR_BUFFER_BIT" />
+          <option value="Litvinova.mainlise.GL_DEPTH_BUFFER_BIT" />
+          <option value="Litvinova.mainlise.glRotatef" />
+          <option value="Litvinova.mainlise.glColor3f" />
+          <option value="Litvinova.mainlise.glBegin" />
+          <option value="Litvinova.mainlise.GL_TRIANGLE_STRIP" />
+          <option value="Litvinova.mainlise.glVertex3fv" />
+          <option value="Litvinova.mainlise.glEnd" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
