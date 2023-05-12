@@ -1,16 +1,33 @@
-# This is a sample Python script.
+import matplotlib.pyplot as plt
+import math
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def main():
+    root = tk.Tk()
+    root.title("Программа для вывода информации из файла в Excel")
+    def DiagramData():
+        file = pd.read_excel('число въездных поездок в Россию.xlsx')
+        df = pd.DataFrame(file)
+        name = df['Страны']
+        tourists = df.iloc[:, 2:11]
+        # Вычисляем количество диаграмм, округляя до ближайшего большего целого
+        num_diagrams = math.ceil(tourists.shape[1] / 3)
+        # Создаем общую фигуру
+        fig, axs = plt.subplots(nrows=num_diagrams, ncols=3, figsize=(16, 6*num_diagrams))
+        axs = axs.flatten()  # Преобразуем массив осей в одномерный массив
+        # Создаем графики
+        for i in range(tourists.shape[1]):
+            ax = axs[i]
+            ax.barh(name, tourists.iloc[:, i], align='center', color=f'C{i}')
+            ax.grid(True, color='grey', linestyle='-.', linewidth=0.5)
+            ax.invert_yaxis()
+            for j, value in enumerate(tourists.iloc[:, i]):
+                ax.text(value, j, str(value), fontsize=6, va='center')
+            ax.tick_params(axis='both', labelsize=6)
+            ax.legend([tourists.columns[i]], fontsize=8, loc='upper right')
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+        # Убираем лишние оси
+        for i in range(tourists.shape[1], num_diagrams*3):
+            axs[i].remove()
+        plt.tight_layout()
+        plt.get_current_fig_manager().window.state('zoomed')
+        plt.show()
